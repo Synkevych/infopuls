@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>HTML pop innerHTML</title>
+    <style>
+        .my-message {
+            width: 300px;
+            height: 110px;
+            background-color: #f08080;
+            text-align: center;
+            border: 2px groove black;
+        }
+
+        .my-message-title {
+            height: 20px;
+            font-size: 120%;
+            background-color: red;
+        }
+
+        .my-message-body {
+            padding: 5px;
+            height: 50px;
+        }
+    </style>
+</head>
+
+<body>
+    <input type="button"
+          value="Show"
+          <onclick="setupMessageButton('Hello!','Youare message here!')" />
+    <script>
+        function createMessage(title, body) {
+            var container = document.createElement('div')
+            container.innerHTML = '<div class="my-message"> \
+            <div class="my-message-body">' + body + '</div> \
+            <input class="my-message-ok" type="button" value="OK"/>\
+</div>'
+            return container.firstChild
+        }
+        //
+        function positionMessage(elem) {
+            elem.style.position = 'absolute'
+            var scroll = document.documentElement.scrollTop || document.body.scrollTop
+            elem.style.top = scroll + 200 + 'px'
+            elem.style.left = Math.floor(document.body.clientWidth / 2) - 150 + 'px'
+        }
+
+        function addCloseClick(messegeElem) {
+            var input = messegeElem.getElementsByTagName('INPUT')[0]
+            input.onclick = function () {
+                messegeElem.parentNode.removeChild(messegeElem)
+            }
+        }
+
+        function setupMessageButton(title, body) {
+            var messageElem = createMessage(title, body)
+            positionMessage(messageElem)
+            addCloseClick(messageElem)
+            addCloseClick(messageElem)
+            document.body.appendChild(messageElem)
+        }
+    </script>
+</body>
+
+</html>
