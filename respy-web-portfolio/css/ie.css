@@ -1,0 +1,16 @@
+img{
+	border: 0;
+}
+
+.header {
+	background: url("../images/header-bg.jpg");
+	-ms-behavior: url(backgroundsize.min.htc);
+}
+
+.menu__link{
+	background: url("../images/menu-bg-ie.png");
+}
+
+.menu-download__link {
+    background: #000 url("../images/sprite.png") no-repeat scroll 0 0;
+}
